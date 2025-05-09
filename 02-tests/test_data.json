@@ -1,0 +1,23 @@
+{
+    "_comment": "This is just an example that shows how to check if the MPIN validation logic works correctly for various cases.",
+    "dob": "1998-02-01",
+    "spouse_dob": "1998-03-05",
+    "anniversary": "2022-06-15",
+    "test_cases": [
+        {
+            "mpin": "1122",
+            "expected_strength": "WEAK",
+            "reasons": ["COMMONLY_USED"]
+        },
+        {
+            "mpin": "0201",
+            "expected_strength": "WEAK",
+            "reasons": ["DEMOGRAPHIC_DOB_SELF"]
+        },
+        {
+            "mpin": "5732",
+            "expected_strength": "STRONG",
+            "reasons": []
+        }
+    ]
+}

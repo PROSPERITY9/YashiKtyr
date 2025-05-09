@@ -1,0 +1,93 @@
+# Common MPIN pattern
+Test Case: MPIN = "1234"
+Output: {'strength': 'WEAK', 'reasons': ['COMMONLY_USED']}
+
+# Repeated digits
+Test Case: MPIN = "1111"
+Output: {'strength': 'WEAK', 'reasons': ['COMMONLY_USED']}
+
+
+# Intuition: Combination of numbers from smallest possible number i.e. 0000 to highest possible i.e. 9999
+# Lower boundary
+Test Case: MPIN = "0000"
+Output: {'strength': 'WEAK', 'reasons': ['COMMONLY_USED']}
+
+# Upper boundary 
+Test Case: MPIN = "9999"
+Output: {'strength': 'WEAK', 'reasons': ['COMMONLY_USED']}
+
+
+#GOOD PASSWORDS
+
+# Random 4-digit strong MPIN
+Test Case: MPIN = "5732"
+Output: {'strength': 'STRONG', 'reasons': []}
+
+# Random 6-digit strong MPIN
+Test Case: MPIN = "927463"
+Output: {'strength': 'STRONG', 'reasons': []}
+
+
+
+
+
+#REDFLAGS
+
+# MPIN derived from user's DOB (DDMM)
+Test Case: MPIN = "0201"
+Output: {'strength': 'WEAK', 'reasons': ['DEMOGRAPHIC_DOB_SELF']}
+
+# MPIN derived from spouse's DOB (DDMM)
+Test Case: MPIN = "0503"
+Output: {'strength': 'WEAK', 'reasons': ['DEMOGRAPHIC_DOB_SPOUSE']}
+
+# MPIN derived from anniversary (DDMM)
+Test Case: MPIN = "1506"
+Output: {'strength': 'WEAK', 'reasons': ['DEMOGRAPHIC_ANNIVERSARY']}
+
+# MPIN derived from full anniversary date
+Test Case: MPIN = "202206"
+Output: {'strength': 'WEAK', 'reasons': ['DEMOGRAPHIC_ANNIVERSARY']}
+
+# Reversed DOB (MMDD)
+Test Case: MPIN = "0102"
+Output: {'strength': 'WEAK', 'reasons': ['DEMOGRAPHIC_DOB_SELF']}
+
+# Reversed spouse DOB (MMDD)
+Test Case: MPIN = "0305"
+Output: {'strength': 'WEAK', 'reasons': ['DEMOGRAPHIC_DOB_SPOUSE']}
+
+# MPIN using year from DOB
+Test Case: MPIN = "1998"
+Output: {'strength': 'WEAK', 'reasons': ['DEMOGRAPHIC_DOB_SELF']}
+
+# MPIN mixing DOB + anniversary
+Test Case: MPIN = "199815"
+Output: {'strength': 'WEAK', 'reasons': ['DEMOGRAPHIC_DOB_SELF', 'DEMOGRAPHIC_ANNIVERSARY']}
+
+# MPIN using YYMM from DOB
+Test Case: MPIN = "9802"
+Output: {'strength': 'WEAK', 'reasons': ['DEMOGRAPHIC_DOB_SELF']}
+
+# Alphanumeric input (edge case - invalid but treated weak)
+Test Case: MPIN = "abcd"
+Output: {'strength': 'WEAK', 'reasons': ['COMMONLY_USED']}
+
+# MPIN with special characters (invalid input)
+Test Case: MPIN = "!@#$"
+Output: {'strength': 'WEAK', 'reasons': ['COMMONLY_USED']}
+
+# Palindromic PIN (symmetry pattern)
+Test Case: MPIN = "1221"
+Output: {'strength': 'WEAK', 'reasons': ['COMMONLY_USED']}
+
+# MPIN with descending pattern
+Test Case: MPIN = "4321"
+Output: {'strength': 'WEAK', 'reasons': ['COMMONLY_USED']}
+
+
+
+# Strong but random 4-digit PIN
+
+Test Case: MPIN = "8462"
+Output: {'strength': 'STRONG', 'reasons': []}
