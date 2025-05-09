@@ -38,4 +38,4 @@ pytest tests/
 ## Usage
 1. Clone the repository:
    ```bash
-   git clone https://github.com/prosperitea/PIN-Validator-Yashi.git
+   git clone https://github.com/PROSPERITY9/PIN-Validator-Yashi.git
